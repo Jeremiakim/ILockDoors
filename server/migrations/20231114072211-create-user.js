@@ -22,7 +22,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      role: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       address: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       phoneNumber: {
