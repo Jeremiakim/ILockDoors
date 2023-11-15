@@ -1,9 +1,9 @@
-import { GoogleLogin } from "@react-oauth/google";
-
 const Home = () => {
   return (
     <>
-      <p>Home</p>
+      <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+        <h1>tes</h1>
+      </div>
     </>
   );
 };
