@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import Login from "../pages/login";
 import Register from "../pages/Register";
 import DashBoard from "../pages/DashBoard";
+import DetailRoom from "../pages/DetailRoom";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/room/:roomId",
+        element: <DetailRoom />,
       },
     ],
   },

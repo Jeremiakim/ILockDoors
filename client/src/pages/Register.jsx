@@ -1,5 +1,5 @@
 import { GoogleLogin } from "@react-oauth/google";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { urlName } from "../../static";
 import axios from "axios";
 import BigLogo from "../logos/BigLogo.png";
@@ -64,7 +64,7 @@ const Register = () => {
                   <input
                     className="w-full h-[1rem] px-4 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                     type="text"
-                    placeholder="Name"
+                    placeholder="Nama"
                     name="fullName"
                     value={inputRegister.name}
                     onChange={onChange}
@@ -88,7 +88,7 @@ const Register = () => {
                   <input
                     className="w-full h-[1rem] px-4 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                     type="text"
-                    placeholder="Address"
+                    placeholder="Alamat"
                     name="address"
                     value={inputRegister.address}
                     onChange={onChange}
@@ -96,7 +96,7 @@ const Register = () => {
                   <input
                     className="w-full h-[1rem] px-4 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                     type="text"
-                    placeholder="Phone Number"
+                    placeholder="Nomor Telepon"
                     name="phoneNumber"
                     value={inputRegister.phoneNumber}
                     onChange={onChange}
@@ -134,20 +134,13 @@ const Register = () => {
                 {/* Email and Password Input */}
                 {/* Sign Up Button */}
                 <p className="mt-6 text-xs text-gray-600 text-center">
-                  I agree to abide by ILockDoors{" "}
-                  <a
-                    href="#"
+                  Udah ada akun ILockDoors?
+                  <Link
+                    to="/login"
                     className="border-b border-gray-500 border-dotted"
                   >
-                    Terms of Service
-                  </a>{" "}
-                  and its{" "}
-                  <a
-                    href="#"
-                    className="border-b border-gray-500 border-dotted"
-                  >
-                    Privacy Policy
-                  </a>
+                    Log-in aja
+                  </Link>
                 </p>
               </div>
             </div>

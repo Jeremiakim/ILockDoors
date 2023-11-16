@@ -1,5 +1,5 @@
 // import { GoogleLogin } from "@react-oauth/google";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { urlName } from "../../static";
 import axios from "axios";
 import BigLogo from "../logos/BigLogo.png";
@@ -32,6 +32,7 @@ const Login = () => {
   };
   const navigate = useNavigate();
   async function googleLogin(codeResponse) {
+    console.log(codeResponse);
     try {
       const { data } = await axios.post(`${urlName}google-login`, null, {
         headers: {
@@ -112,20 +113,13 @@ const Login = () => {
                 {/* Email and Password Input */}
                 {/* Sign Up Button */}
                 <p className="mt-6 text-xs text-gray-600 text-center">
-                  I agree to abide by ILockDoors{" "}
-                  <a
-                    href="#"
+                  Belum ada akun ILockDoors?
+                  <Link
+                    to="/register"
                     className="border-b border-gray-500 border-dotted"
                   >
-                    Terms of Service
-                  </a>{" "}
-                  and its{" "}
-                  <a
-                    href="#"
-                    className="border-b border-gray-500 border-dotted"
-                  >
-                    Privacy Policy
-                  </a>
+                    Buat akan dulu
+                  </Link>
                 </p>
               </div>
             </div>

@@ -4,7 +4,7 @@ import BigLogo from "../logos/BigLogo.png";
 const Navbar = () => {
   return (
     <>
-      <div className="flex justify-evenly bg-[#efefef] text-neutral-content shadow-2xl py-1">
+      <div className="sticky top-0 z-50 flex justify-evenly bg-[#efefef] text-neutral-content shadow-2xl py-1">
         <div className="flex-1 my-[0.5rem] ml-[2rem]">
           <Link to="/">
             <button className="flex text-xl font-medium items-center justify-center px-1 py-1 rounded-md text-mono text-black">
@@ -22,9 +22,12 @@ const Navbar = () => {
                 placeholder="Search..."
                 className="rounded-full px-[13px] w-[30vw] h-[2.5vw] text-sm border border-gray-400"
               />
-              <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
+              <Link
+                to="/?=serach"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2"
+              >
                 Go
-              </button>
+              </Link>
             </div>
           </div>
           <div className="flex-2 my-[0.5rem] mr-[1rem]">
@@ -47,9 +50,11 @@ const Navbar = () => {
           </div>
 
           <div className="flex-2 my-[0.5rem] mr-[1rem]">
-            <button className="flex text-base font-medium items-center justify-center px-1 py-1 rounded-md text-mono text-black border-2 border-black transition-all hover:text-slate-500 hover:border-slate-500">
-              <span className="relative text-sm">Log In</span>
-            </button>
+            <Link to="/login">
+              <button className="flex text-base font-medium items-center justify-center px-1 py-1 rounded-md text-mono text-[#343a80] border-2 border-[#343a80] transition-all hover:text-slate-400 hover:border-slate-400">
+                <span className="relative text-sm">Masuk</span>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
