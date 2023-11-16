@@ -10,7 +10,12 @@ const Home = () => {
 
   const fecthRooms = async () => {
     try {
-      const { data } = await axios.get(`${urlName}rooms`);
+      const access_token = localStorage.getItem("access_token");
+      const { data } = await axios.get(`${urlName}rooms`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
       // console.log(data);
       setrooms(data.Rooms);
     } catch (error) {
@@ -34,7 +39,7 @@ const Home = () => {
         <div
           to=""
           href="#"
-          className="mx-[20rem] my-[2rem] flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+          className="mx-[20rem] my-[4rem] flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
         >
           <div className="flex flex-col justify-between p-4 leading-normal">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

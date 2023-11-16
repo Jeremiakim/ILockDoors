@@ -14,6 +14,7 @@ const DetailRoom = () => {
     description,
     startDate,
     endDate,
+    status,
     AccomodationId,
   } = room;
   const { roomId } = useParams();
