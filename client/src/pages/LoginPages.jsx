@@ -115,7 +115,7 @@ const LoginPages = () => {
                     to="/register"
                     className="border-b border-gray-500 border-dotted"
                   >
-                    Buat akan dulu
+                    Buat akun dulu
                   </Link>
                 </p>
               </div>
@@ -135,7 +135,7 @@ const LoginPages = () => {
         </div>
         {/* Popup Component */}
         <div
-          className="hidden treact-popup fixed inset-0 flex items-center justify-center"
+          className="treact-popup fixed inset-0 flex items-center justify-center"
           style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
         >
           <div className="max-w-lg p-8 sm:pb-4 bg-white rounded shadow-lg text-center sm:text-left">
