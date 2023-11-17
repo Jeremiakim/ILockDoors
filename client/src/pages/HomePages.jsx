@@ -3,7 +3,7 @@ import Card from "../components/Card";
 import axios from "axios";
 import { urlName } from "../../static";
 import { useNavigate } from "react-router-dom";
-// import { Card } from "../components/Card";
+
 const apiPlaces = import.meta.env.VITE_SECRET_API_PLACES;
 
 const Home = () => {
