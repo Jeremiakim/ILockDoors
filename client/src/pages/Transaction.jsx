@@ -1,17 +1,30 @@
-import { Xendit } from "xendit-node";
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+// import { urlName } from "../../static";
+// import { useParams } from "react-router-dom";
 
-const Transaction = () => {
-  const apiXendit = import.meta.env.VITE_SECRET_API_KEY;
-  const xenditClient = new Xendit({
-    secretKey: apiXendit,
-    xenditURL: "https://mock-server.localhost:3000",
-  });
-  console.log(xenditClient.opts);
-  return (
-    <>
-      <p></p>
-    </>
-  );
-};
+// const Transaction = () => {
+//   // const [invoices, setInvoices] = useState({});
+//   const fecthInvoices = async () => {
+//     try {
+//       // const { roomId } = useParams;
+//       const response = await axios.post(`${urlName}invoiceXendit/2`);
+//       // console.log(response, 12);
+//       // setInvoices();
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+//   // console.log(invoices);
+//   useEffect(() => {
+//     fecthInvoices();
+//   }, []);
 
-export default Transaction;
+//   return (
+//     <>
+//       <p>aaaa</p>
+//     </>
+//   );
+// };
+
+// export default Transaction;

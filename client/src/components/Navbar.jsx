@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BigLogo from "../logos/BigLogo.png";
 import { LuLogOut } from "react-icons/lu";
+import { useState } from "react";
 const Navbar = () => {
+  const [isLoggedin, setIsLoggedin] = useState(false);
+  const navigate = useNavigate();
+  const logout = () => {
+    navigate("/");
+    localStorage.removeItem("access_token");
+    setIsLoggedin(false);
+  };
   return (
     <>
       <div className="sticky top-0 z-50 flex justify-evenly bg-[#efefef] text-neutral-content shadow-2xl py-1">
@@ -35,9 +43,7 @@ const Navbar = () => {
               className="form-control mr-2 bg-[#efefef] flex text-base font-medium items-center justify-center px-1 py-1"
               aria-describedby="clear-addon"
             >
-              <option selected disabled>
-                Cari Tempat Apa?
-              </option>
+              <option disabled>Cari Tempat Apa?</option>
               <option>Kost</option>
               <option>Villa</option>
             </select>
@@ -50,7 +56,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex-2 my-[0.5rem] mr-[1rem]">
-            <button className="w-[2rem] h-[2rem]">
+            <button className="w-[2rem] h-[2rem]" onClick={logout}>
               <LuLogOut />
             </button>
           </div>

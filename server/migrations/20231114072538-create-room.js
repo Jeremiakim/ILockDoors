@@ -9,6 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       roomNumber: {
         allowNull: false,
         type: Sequelize.INTEGER,
@@ -21,6 +25,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
+      description: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       startDate: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -28,6 +36,16 @@ module.exports = {
       endDate: {
         allowNull: false,
         type: Sequelize.DATE,
+      },
+      status: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        defaultValue: "vacant",
+      },
+      externalId: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        defaultValue: `A-${new Date()}`,
       },
       UserId: {
         allowNull: false,

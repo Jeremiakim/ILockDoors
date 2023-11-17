@@ -1,7 +1,7 @@
 const errorHandler = (err, req, res, next) => {
   let code = 500;
   let message = "Intenal Server Error";
-  console.log(err.message, "<<<<<<<<<< di error handler");
+  console.log(err, "<<<<<<<<<< di error handler");
   if (err.name === "SequelizeValidationError") {
     code = 400;
     err.errors.map((el) => {
@@ -33,6 +33,18 @@ const errorHandler = (err, req, res, next) => {
     message = err.message;
   } else if (err.name === "Invalid Password") {
     code = 400;
+    message = err.message;
+  } else if (err.name === "JsonWebTokenError") {
+    code = 401;
+    message = "Wrong Access Token";
+  } else if (err.name === "Unauthorized") {
+    code = 401;
+    message = err.message;
+  } else if (err.name === "Forbidden") {
+    code = 403;
+    message = err.message;
+  } else if (err.name === "Not Found") {
+    code = 404;
     message = err.message;
   }
 

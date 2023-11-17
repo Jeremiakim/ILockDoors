@@ -93,9 +93,9 @@ class UserController {
       let payload = {
         id: user.id,
         email: user.email,
+        role: user.role,
       };
       let access_token = signToken(payload);
-      //   console.log(access_token);
       res.status(200).json({ access_token });
     } catch (err) {
       console.log(err);

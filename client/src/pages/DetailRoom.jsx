@@ -5,6 +5,8 @@ import { urlName } from "../../static";
 
 const DetailRoom = () => {
   let [room, setRoom] = useState({});
+  const [invoices, setInvoices] = useState({});
+  let [accomodations, setAccomodations] = useState([]);
   const {
     id,
     name,
@@ -14,19 +16,34 @@ const DetailRoom = () => {
     description,
     startDate,
     endDate,
-    status,
     AccomodationId,
   } = room;
   const { roomId } = useParams();
   //   console.log(roomId);
+  const access_token = localStorage.getItem("access_token");
   const fecthRoom = async () => {
-    const { data } = await axios.get(`${urlName}rooms/${roomId}`);
+    const { data } = await axios.get(`${urlName}rooms/${roomId}`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
     // console.log(data);
     setRoom(data.room);
   };
+  const fecthInvoices = async () => {
+    try {
+      const { data } = await axios.post(`${urlName}invoiceXendit/${roomId}`);
+      setInvoices(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fecthRoom();
+    fecthInvoices();
   }, []);
+
   //   console.log(roomId);
 
   return (
@@ -55,7 +72,7 @@ const DetailRoom = () => {
             <p className="text-lg text-gray-600 mb-6"> Sampai : {endDate}</p>
             <div className="flex justify-end">
               <Link
-                to="#"
+                to={invoices.invoiceUrl}
                 className="bg-[#343a80] text-white px-6 py-3 rounded-lg hover:bg-blue-950"
               >
                 Ajukan Sewa

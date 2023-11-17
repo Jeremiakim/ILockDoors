@@ -39,7 +39,7 @@ const Login = () => {
           token: codeResponse.credential,
         },
       });
-      localStorage.setItem("access_token", data);
+      localStorage.setItem("access_token", data.access_token);
       navigate("/");
     } catch (error) {
       console.log(error);
