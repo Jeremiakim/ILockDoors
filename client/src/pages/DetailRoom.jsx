@@ -6,20 +6,12 @@ import { urlName } from "../../static";
 const DetailRoom = () => {
   let [room, setRoom] = useState({});
   const [invoices, setInvoices] = useState({});
-  let [accomodations, setAccomodations] = useState([]);
-  const {
-    id,
-    name,
-    roomNumber,
-    imgUrl,
-    price,
-    description,
-    startDate,
-    endDate,
-    AccomodationId,
-  } = room;
+  // const [onStatus, setOnStatus] = useState("");
+  // let [accomodations, setAccomodations] = useState([]);
+  let { name, roomNumber, imgUrl, price, description, startDate, endDate } =
+    room;
+  // console.log(room, 22);
   const { roomId } = useParams();
-  //   console.log(roomId);
   const access_token = localStorage.getItem("access_token");
   const fecthRoom = async () => {
     const { data } = await axios.get(`${urlName}rooms/${roomId}`, {
@@ -27,7 +19,6 @@ const DetailRoom = () => {
         Authorization: `Bearer ${access_token}`,
       },
     });
-    // console.log(data);
     setRoom(data.room);
   };
   const fecthInvoices = async () => {
@@ -43,8 +34,6 @@ const DetailRoom = () => {
     fecthRoom();
     fecthInvoices();
   }, []);
-
-  //   console.log(roomId);
 
   return (
     <>

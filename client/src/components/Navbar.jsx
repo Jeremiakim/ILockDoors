@@ -6,9 +6,9 @@ const Navbar = () => {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const navigate = useNavigate();
   const logout = () => {
-    navigate("/");
     localStorage.removeItem("access_token");
     setIsLoggedin(false);
+    navigate("/");
   };
   return (
     <>

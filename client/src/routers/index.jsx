@@ -4,7 +4,6 @@ import Login from "../pages/login";
 import Register from "../pages/Register";
 import DashBoard from "../pages/DashBoard";
 import DetailRoom from "../pages/DetailRoom";
-// import Transaction from "../pages/Transaction";
 
 const router = createBrowserRouter([
   {
@@ -44,10 +43,6 @@ const router = createBrowserRouter([
         path: "/room/:roomId",
         element: <DetailRoom />,
       },
-      // {
-      //   path: "/transaction",
-      //   element: <Transaction />,
-      // },
     ],
   },
 ]);

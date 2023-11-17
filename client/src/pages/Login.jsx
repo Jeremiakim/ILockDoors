@@ -24,15 +24,12 @@ const Login = () => {
       const access_token = response.data.access_token;
       localStorage.setItem("access_token", access_token);
       navigate("/");
-      console.log(response, 32);
-      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
   const navigate = useNavigate();
   async function googleLogin(codeResponse) {
-    console.log(codeResponse);
     try {
       const { data } = await axios.post(`${urlName}google-login`, null, {
         headers: {
@@ -88,9 +85,9 @@ const Login = () => {
                       className="w-6 h-6 -ml-2"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
                       <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
                       <circle cx="8.5" cy="7" r="4" />
