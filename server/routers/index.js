@@ -3,7 +3,7 @@ const routerRoom = require("./routerRoom");
 const routerAccomodation = require("./routerAccomodation");
 const UserController = require("../controllers/userController");
 const errorHandler = require("../middleware/errorHandler");
-const authentication = require("../middleware/Authentication");
+const authentication = require("../middleware/authentication");
 const AuthController = require("../controllers/authController");
 const TransactionController = require("../controllers/transactionController");
 
