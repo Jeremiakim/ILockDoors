@@ -12,17 +12,13 @@ const authentication = async (req, res, next) => {
       };
     }
     authorization = authorization.split(" ")[1];
-    // console.log(authorization);
     const verifiedToken = verifyToken(authorization);
-
-    console.log(verifiedToken, "token");
 
     const compareUser = await User.findOne({
       where: {
         email: verifiedToken.email,
       },
     });
-    console.log(compareUser, 22);
     if (!compareUser) {
       throw {
         name: `Unauthorized`,
@@ -35,8 +31,6 @@ const authentication = async (req, res, next) => {
       email: verifiedToken.email,
       role: verifiedToken.role,
     };
-
-    console.log(req.infoUser, "infoUser");
 
     next();
   } catch (err) {

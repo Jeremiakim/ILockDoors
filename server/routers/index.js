@@ -13,6 +13,7 @@ router.post("/register", UserController.Register);
 router.post("/login", UserController.Login);
 router.post("/google-login", AuthController.googleLogin);
 router.post("/invoiceXendit/:roomId", TransactionController.invoiceXendit);
+router.post("/invoiceXendit/paid", TransactionController.finishPayment);
 router.use(authentication);
 router.use("/rooms", routerRoom);
 router.use("/accomodations", routerAccomodation);

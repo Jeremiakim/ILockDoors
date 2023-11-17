@@ -3,7 +3,6 @@ const { hashPassword, compareHash } = require("../helpers/bcryptjs");
 const { signToken, verifyToken } = require("../helpers/jwt");
 class UserController {
   static async Register(req, res, next) {
-    // console.log(req.body);
     try {
       const { fullName, email, password, address, role, phoneNumber } =
         req.body;
@@ -57,7 +56,6 @@ class UserController {
   }
   static async Login(req, res, next) {
     try {
-      //   console.log(req.body, 60);
       const { email, password } = req.body;
       if (!email) {
         throw {
@@ -76,7 +74,6 @@ class UserController {
           email,
         },
       });
-      //   console.log(user);
       if (!user) {
         throw {
           name: `Invalid Email`,

@@ -1,6 +1,10 @@
 const { Invoice } = require("xendit-node");
 const { Room } = require("../models");
 class TransactionController {
+  static async finishPayment(req, res, next) {
+    // console.log(req.body, 5);
+  }
+
   static async invoiceXendit(req, res, next) {
     try {
       const invoiceService = new Invoice({
@@ -20,7 +24,6 @@ class TransactionController {
       const response = await invoiceService.createInvoice({
         data,
       });
-      // console.log(response);
 
       res.status(200).json(response);
     } catch (error) {

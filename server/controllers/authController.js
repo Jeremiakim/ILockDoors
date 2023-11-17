@@ -12,7 +12,7 @@ class AuthController {
         audience: process.env.GOOGLE_CLIENT_ID,
       });
       const payload = ticket.getPayload();
-      console.log(payload.email, 18);
+      // console.log(payload.email, 18);
       const [user, created] = await User.findOrCreate({
         where: {
           email: payload.email,
@@ -33,7 +33,7 @@ class AuthController {
       });
       res.status(200).json({ access_token });
     } catch (err) {
-      console.log(err, 38);
+      console.log(err);
       next(err);
     }
   }

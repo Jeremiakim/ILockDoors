@@ -54,14 +54,14 @@ module.exports = {
           model: "Users",
           key: "id",
         },
-        onDelete: "CASCADE",
+        onDelete: "SET NULL",
         onUpdate: "CASCADE",
       },
       AccomodationId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: "Rooms",
+          model: "Accomodations",
           key: "id",
         },
         onDelete: "CASCADE",
