@@ -1,14 +1,14 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
-import Home from "../pages/Home";
-import Login from "../pages/login";
-import Register from "../pages/Register";
+import HomePages from "../pages/HomePages";
+import LoginPages from "../pages/LoginPages";
+import RegisterPages from "../pages/RegisterPages";
 import DashBoard from "../pages/DashBoard";
 import DetailRoom from "../pages/DetailRoom";
 
 const router = createBrowserRouter([
   {
     path: "/register",
-    element: <Register />,
+    element: <RegisterPages />,
     loader: async () => {
       if (localStorage.access_token) {
         return redirect("/");
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: <LoginPages />,
     loader: async () => {
       if (localStorage.access_token) {
         return redirect("/");
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <HomePages />,
       },
       {
         path: "/room/:roomId",

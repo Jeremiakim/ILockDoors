@@ -6,7 +6,7 @@ import BigLogo from "../logos/BigLogo.png";
 import { GoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 
-const Login = () => {
+const LoginPages = () => {
   const [inputLogin, setInputLogin] = useState({
     email: "",
     password: "",
@@ -148,4 +148,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPages;

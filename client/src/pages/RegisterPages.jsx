@@ -4,7 +4,7 @@ import { urlName } from "../../static";
 import axios from "axios";
 import BigLogo from "../logos/BigLogo.png";
 import { useState } from "react";
-const Register = () => {
+const RegisterPages = () => {
   const navigate = useNavigate();
   const [inputRegister, setInputRegister] = useState({
     fullName: "",
@@ -171,4 +171,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterPages;

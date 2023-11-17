@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const apiPlaces = import.meta.env.VITE_SECRET_API_PLACES;
 
-const Home = () => {
+const HomePages = () => {
   const navigate = useNavigate();
   const [rooms, setrooms] = useState([]);
   const [places, setPlaces] = useState([]);
@@ -125,4 +125,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePages;
