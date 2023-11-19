@@ -24,11 +24,15 @@ const DetailRoom = () => {
   };
   const fecthInvoices = async () => {
     try {
-      const { data } = await axios.post(`${urlName}invoiceXendit/${roomId}`, {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
+      const { data } = await axios.post(
+        `${urlName}invoiceXendit/${roomId}`,
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
       setInvoices(data);
     } catch (error) {
       console.log(error);
