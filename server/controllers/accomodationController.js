@@ -85,7 +85,7 @@ class AccomodationController {
         }
       );
       res
-        .status(201)
+        .status(200)
         .json({ message: "Success to Update accomodation", findAccomodation });
     } catch (error) {
       console.log(error);

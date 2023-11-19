@@ -2,9 +2,7 @@ const { verifyToken } = require("../helpers/jwt");
 const { User } = require("../models/index");
 const authentication = async (req, res, next) => {
   try {
-    // console.log(req.headers);
     let { authorization } = req.headers;
-    // console.log(authorization);
     if (!authorization) {
       throw {
         name: "Unauthorized",
@@ -25,7 +23,6 @@ const authentication = async (req, res, next) => {
         message: `You Should Login First`,
       };
     }
-    // console.log(verifiedToken, "<<<<<<di authen");
     req.infoUser = {
       id: verifiedToken.id,
       email: verifiedToken.email,

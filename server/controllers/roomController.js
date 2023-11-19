@@ -127,7 +127,7 @@ class RoomController {
       );
       // console.log(data);
       // console.log(findRoom);
-      res.status(201).json({ message: "Updated Room Success", findRoom });
+      res.status(200).json({ message: "Updated Room Success", findRoom });
     } catch (err) {
       console.log(err);
       next(err);
@@ -179,7 +179,7 @@ class RoomController {
           },
         }
       );
-      res.status(201).json({ message: "Booked", findRoom });
+      res.status(200).json({ message: "Booked", findRoom });
 
       // console.log(room);
     } catch (err) {
@@ -207,7 +207,7 @@ class RoomController {
           },
         }
       );
-      res.status(201).json({ message: "Vacant", findRoom });
+      res.status(200).json({ message: "Vacant", findRoom });
       // console.log(room);
     } catch (err) {
       console.log(err);
