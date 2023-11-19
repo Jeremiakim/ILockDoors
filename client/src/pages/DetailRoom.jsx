@@ -6,24 +6,29 @@ import { urlName } from "../../static";
 const DetailRoom = () => {
   let [room, setRoom] = useState({});
   const [invoices, setInvoices] = useState({});
-  // const [onStatus, setOnStatus] = useState("");
-  // let [accomodations, setAccomodations] = useState([]);
   let { name, roomNumber, imgUrl, price, description, startDate, endDate } =
     room;
-  // console.log(room, 22);
   const { roomId } = useParams();
   const access_token = localStorage.getItem("access_token");
   const fecthRoom = async () => {
-    const { data } = await axios.get(`${urlName}rooms/${roomId}`, {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    });
-    setRoom(data.room);
+    try {
+      const { data } = await axios.get(`${urlName}rooms/${roomId}`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+      setRoom(data.room);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const fecthInvoices = async () => {
     try {
-      const { data } = await axios.post(`${urlName}invoiceXendit/${roomId}`);
+      const { data } = await axios.post(`${urlName}invoiceXendit/${roomId}`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
       setInvoices(data);
     } catch (error) {
       console.log(error);
