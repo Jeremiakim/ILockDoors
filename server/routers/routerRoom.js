@@ -7,8 +7,8 @@ const routerRoom = express.Router();
 routerRoom.get("/", RoomController.readRooms);
 routerRoom.get("/:roomId", RoomController.readDetailRoom);
 routerRoom.post("/", RoomController.addRoom);
-routerRoom.patch("/:roomId", RoomController.vacantRoom);
-routerRoom.patch("/:roomId", RoomController.bookedRoom);
+routerRoom.patch("/:roomId", authorization, RoomController.vacantRoom);
+routerRoom.patch("/:roomId", authorization, RoomController.bookedRoom);
 routerRoom.put("/:roomId", authorization, RoomController.editRoom);
 routerRoom.delete("/:roomId", authorization, RoomController.deleteRoom);
 

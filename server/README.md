@@ -7,7 +7,7 @@
 
 &nbsp;
 
-# API Documentation - Restaurant App
+# API Documentation - ILockDoors
 
 ## Models :
 
@@ -19,22 +19,25 @@ _User_
 - email : string, required, unique, email format
 - password : string, required, length min 5
 - role : string
-- phoneNumber : string
 - address: string
+- phoneNumber : string
 ```
 
-_Cuisine_
+_Room_
 
 ```
 - id : primary
+- roomNumber : integer,required
 - name: string, required
+- imgUrl: string, required
 - description: string, required
 - price: integer, required, min price
-- imgUrl: string, required
-- createdAt: date
-- updatedAt: date
-- categoryId: integer, required
-- authorId: integer, required
+- startDate: date,
+- endDate: date,
+- createdAt: date,
+- updatedAt: date,
+- UserId: integer, required
+- AccomodationId: integer, required
 ```
 
 _Category_
@@ -42,6 +45,7 @@ _Category_
 ```
 - id : primary
 - name: string, required
+- city: string, required
 ```
 
 &nbsp;
@@ -50,19 +54,26 @@ _Category_
 
 List of available endpoints:
 
+- `POST /register`
 - `POST /login`
-- `GET /pub/cuisines`
-- `GET /pub/cuisines/:id`
+- `POST /google-login`
 
 Routes below need authentication:
 
-- `POST /cuisines`
-- `GET /cuisines`
-- `GET /cuisines/:id`
-- `POST /categories`
-- `GET /categories`
-- `PUT /categories/:id`
-- `DELETE /categories/:id`
+- `POST /rooms`
+- `GET /rooms`
+- `GET /rooms/:roomId`
+- `PUT /rooms/:roomId`
+- `PATCH /rooms/:roomId (VACANT)`
+- `PATCH /rooms/:roomId (BOOKED)`
+- `DELETE /rooms/:id`
+- `POST /invoiceXendit/:roomId`
+- `POST /invoiceXendit/paid`
+- `POST /accomodations`
+- `GET /accomodations`
+- `GET /accomodations/:accomodationId`
+- `PUT /accomodations/:accomodationId`
+- `DELETE /accomodations/:accomodationId`
 
 Routes below need authentication & authorizaton:
 
