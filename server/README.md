@@ -77,14 +77,14 @@ Routes below need authentication:
 
 Routes below need authentication & authorizaton:
 
-- `POST /register-user`
-- `PUT /cuisines/:id`
-- `PATCH /cuisines/:id`
-- `DELETE /cuisines/:id`
+- `PUT /rooms/:roomId`
+- `PATCH /rooms/:roomId (VACANT)`
+- `PATCH /rooms/:roomId (BOOKED)`
+- `DELETE /rooms/:id`
 
 &nbsp;
 
-## 1. POST /register-user
+## 1. POST /register
 
 Request:
 
@@ -100,11 +100,11 @@ Request:
 
 ```json
 {
-  "username": "string",
+  "fullName": "string",
   "email": "string",
   "password": "string",
-  "phoneNumber": "string",
-  "address": "string"
+  "address": "string",
+  "phoneNumber": "string"
 }
 ```
 
@@ -112,8 +112,11 @@ _Response (201 - Created)_
 
 ```json
 {
-  "id": "integer",
-  "email": "string"
+  "msg": "User Id 6 was created",
+  "New_User": {
+    "id": "integer",
+    "email": "string"
+  }
 }
 ```
 
@@ -121,23 +124,31 @@ _Response (400 - Bad Request)_
 
 ```json
 {
-  "message": "email is required"
+    "message": "Name Must Be Required"
 }
 OR
 {
-  "message": "invalid email format"
+    "message": "Email Must Be Required"
 }
 OR
 {
-  "message": "email must be unique"
+    "message": "Email Alredy Exists"
 }
 OR
 {
-  "message": "password is required"
+    "message": "Email Must Be Unique"
 }
 OR
 {
-  "message": "password must have at least 5 characters"
+    "message": "Password Must Be Required"
+}
+OR
+{
+    "message": "Address Must Be Required"
+}
+OR
+{
+    "message": "Phone Number Must Be Required"
 }
 ```
 
@@ -166,15 +177,15 @@ _Response (400 - Bad Request)_
 
 ```json
 {
-  "message": "email is required"
+    "message": "Email Must Be Required"
 }
 OR
 {
-  "message": "password is required"
+    "message": "Password Must Be Required"
 }
 OR
 {
-  "message": "invalid email/password"
+    "message": "Invalid Email Or Password"
 }
 ```
 
@@ -204,10 +215,16 @@ Request:
 ```json
 {
   "name": "string",
+  "roomNumber": "integer",
   "description": "string",
   "price": "integer",
   "imgUrl": "string",
-  "categoryId": "integer"
+  "startDate": "date",
+  "endDate": "date",
+  "status": "string",
+  "externalId": "string",
+  "UserId": "integer",
+  "AccomodationId": "integer"
 }
 ```
 

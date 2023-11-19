@@ -45,7 +45,7 @@ module.exports = {
       externalId: {
         allowNull: false,
         type: Sequelize.STRING,
-        defaultValue: `A-${new Date()}`,
+        defaultValue: `A-${new Date().getTime()}`,
       },
       UserId: {
         allowNull: false,

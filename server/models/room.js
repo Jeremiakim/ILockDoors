@@ -149,7 +149,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Room.beforeCreate(async (room, options) => {
-    room.externalId = `A-${new Date()}`;
+    room.externalId = `A-${new Date().getTime()}`;
   });
   return Room;
 };
