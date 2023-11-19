@@ -90,6 +90,7 @@ class RoomController {
       const {
         name,
         externalId,
+        status,
         roomNumber,
         imgUrl,
         description,
@@ -115,7 +116,6 @@ class RoomController {
           description,
           startDate,
           endDate,
-          externalId,
           UserId: req.infoUser.id,
           AccomodationId,
         },
