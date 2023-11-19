@@ -13,8 +13,30 @@ module.exports = (sequelize, DataTypes) => {
   }
   Accomodation.init(
     {
-      name: DataTypes.STRING,
-      city: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Name Cannot Be Null",
+          },
+          notEmpty: {
+            msg: "Name Cannot Be Empty",
+          },
+        },
+      },
+      city: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "City Cannot Be Null",
+          },
+          notEmpty: {
+            msg: "City Cannot Be Empty",
+          },
+        },
+      },
     },
     {
       sequelize,

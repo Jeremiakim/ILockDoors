@@ -189,7 +189,7 @@ OR
 }
 ```
 
-## 3. POST /cuisines
+## 3. POST /rooms
 
 Request:
 
@@ -232,15 +232,20 @@ _Response (201 - Created)_
 
 ```json
 {
-  "id": 2,
-  "name": "Cheeseburger",
-  "description": "Burger with cheese",
-  "price": 30000,
-  "imgUrl": "https://static01.nyt.com/images/2023/07/13/multimedia/13xp-cheese-king/13xp-cheese-king-superJumbo.jpg",
-  "categoryId": 30,
-  "authorId": 5,
-  "updatedAt": "2023-10-30T13:50:46.749Z",
-  "createdAt": "2023-10-30T13:50:46.749Z"
+  "id": 9,
+  "name": " Villa Papua",
+  "roomNumber": 1,
+  "imgUrl": "asdoin",
+  "price": 1000000,
+  "description": "helo ini ada di apua",
+  "startDate": "2020-11-10T17:00:00.000Z",
+  "endDate": "2020-12-11T17:00:00.000Z",
+  "status": "vacant",
+  "externalId": "A-1700400274730",
+  "UserId": 1,
+  "AccomodationId": 1,
+  "updatedAt": "2023-11-19T13:24:34.723Z",
+  "createdAt": "2023-11-19T13:24:34.723Z"
 }
 ```
 
@@ -249,6 +254,10 @@ _Response (400 - Bad Request)_
 ```json
 {
   "message": "name is required"
+}
+OR
+{
+  "message": "Room Number is required"
 }
 OR
 {
@@ -264,15 +273,27 @@ OR
 }
 OR
 {
-  "message": "categoryId is required"
+    "message": "Start date Cannot Be Null"
 }
 OR
 {
-  "message": "authorId is required"
+    "message": "End date Cannot Be Null"
+}
+OR
+{
+    "message": "External Id date Cannot Be Null"
+}
+OR
+{
+  "message": "UserId is required"
+}
+OR
+{
+  "message": "AccomodationId is required"
 }
 ```
 
-## 4. GET /cuisines
+## 4. GET /rooms
 
 Request:
 
@@ -288,22 +309,34 @@ _Response (200 - OK)_
 
 ```json
 [
-  {
-    "id": 1,
-    "name": "Pepperoni Pizza",
-    "description": "Pizza with pepperoni",
-    "price": 100000,
-    "imgUrl": "https://ik.imagekit.io/alder/Alder_Cover_R-UcPSQQw.jpg",
-    "createdAt": "2023-11-03T06:20:23.320Z",
-    "updatedAt": "2023-11-03T10:05:33.006Z",
-    "categoryId": 5,
-    "authorId": 1
-  },
+    {
+        "id": 3,
+        "name": "Kost Welos Tangerang",
+        "roomNumber": 2,
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqWouql30GfzDzhRWhEIxnr2i8QcowQm6iPw&usqp=CAU",
+        "price": 1000000,
+        "description": "Ac,kasur,tv",
+        "startDate": "2023-11-20T00:00:00.000Z",
+        "endDate": "2023-12-05T00:00:00.000Z",
+        "status": "vacant",
+        "externalId": "A-6751638",
+        "UserId": 3,
+        "AccomodationId": 1,
+        "createdAt": "2023-11-17T05:26:39.863Z",
+        "updatedAt": "2023-11-17T05:26:39.863Z",
+        "Accomodation": {
+            "id": 1,
+            "name": "DeKhost",
+            "city": "Tangerang Selatan",
+            "createdAt": "2023-11-17T05:26:39.850Z",
+            "updatedAt": "2023-11-17T05:26:39.850Z"
+        }
+    },
   ...,
 ]
 ```
 
-## 5. GET /cuisines/:id
+## 5. GET /rooms/:roomId
 
 Request :
 
@@ -327,15 +360,30 @@ _Response (200 - OK)_
 
 ```json
 {
-  "id": 1,
-  "name": "Pepperoni Pizza",
-  "description": "Pizza with pepperoni",
-  "price": 100000,
-  "imgUrl": "https://ik.imagekit.io/alder/Alder_Cover_R-UcPSQQw.jpg",
-  "createdAt": "2023-11-03T06:20:23.320Z",
-  "updatedAt": "2023-11-03T10:05:33.006Z",
-  "categoryId": 5,
-  "authorId": 1
+  "message": "Success to read Room 1",
+  "room": {
+    "id": 1,
+    "name": "Villa Bogor Temple Gress",
+    "roomNumber": 1,
+    "imgUrl": "https://ik.imagekit.io/tvlk/blog/2022/04/Vila-Murah-di-Puncak-dengan-Harga-200-Ribuan-Aries-Biru-Hotel-Villa--1024x683.jpeg",
+    "price": 2500000,
+    "description": "Ac,kamar mandi,kasur,tv,lemari baju,dapur",
+    "startDate": "2023-11-15T00:00:00.000Z",
+    "endDate": "2023-11-20T00:00:00.000Z",
+    "status": "vacant",
+    "externalId": "A-12872138",
+    "UserId": 1,
+    "AccomodationId": 2,
+    "createdAt": "2023-11-17T05:26:39.862Z",
+    "updatedAt": "2023-11-17T05:26:39.863Z",
+    "Accomodation": {
+      "id": 2,
+      "name": "Villa Puncak",
+      "city": "Bogor",
+      "createdAt": "2023-11-17T05:26:39.850Z",
+      "updatedAt": "2023-11-17T05:26:39.850Z"
+    }
+  }
 }
 ```
 
@@ -343,11 +391,11 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "cuisine not found"
+  "message": "This room does not exists"
 }
 ```
 
-## 6. PUT /cuisines/:id
+## 6. PUT /rooms/:roomId
 
 Request :
 
@@ -371,15 +419,17 @@ Request :
 
 ```json
 {
-  "id": 3,
-  "name": "Pizza",
-  "description": "Pizza with Pineapple",
-  "price": 75000,
-  "imgUrl": "https://media.istockphoto.com/id/521403691/photo/hot-homemade-pepperoni-pizza.jpg?s=612x612&w=0&k=20&c=PaISuuHcJWTEVoDKNnxaHy7L2BTUkyYZ06hYgzXmTbo=",
-  "createdAt": "2023-11-03T09:40:28.483Z",
-  "updatedAt": "2023-11-03T23:37:13.215Z",
-  "categoryId": 5,
-  "authorId": 1
+  "name": "string",
+  "roomNumber": "integer",
+  "description": "string",
+  "price": "integer",
+  "imgUrl": "string",
+  "startDate": "date",
+  "endDate": "date",
+  "status": "string",
+  "externalId": "string",
+  "UserId": "integer",
+  "AccomodationId": "integer"
 }
 ```
 
@@ -387,15 +437,23 @@ _Response (200 - OK)_
 
 ```json
 {
-  "id": 3,
-  "name": "Pizza",
-  "description": "Pizza with Pineapple",
-  "price": 75000,
-  "imgUrl": "https://media.istockphoto.com/id/521403691/photo/hot-homemade-pepperoni-pizza.jpg?s=612x612&w=0&k=20&c=PaISuuHcJWTEVoDKNnxaHy7L2BTUkyYZ06hYgzXmTbo=",
-  "createdAt": "2023-11-03T09:40:28.483Z",
-  "updatedAt": "2023-11-03T23:37:13.215Z",
-  "categoryId": 5,
-  "authorId": 1
+  "message": "Updated Room Success",
+  "findRoom": {
+    "id": 4,
+    "name": " Villa Papua",
+    "roomNumber": 1,
+    "imgUrl": "asdoin",
+    "price": 1000000,
+    "description": "helo ini ada di apua",
+    "startDate": "2020-11-10T17:00:00.000Z",
+    "endDate": "2020-12-11T17:00:00.000Z",
+    "status": "vacant",
+    "externalId": "A-Sun Nov 19 2023 20:15:09 GMT+0700 (Indochina Time)",
+    "UserId": 1,
+    "AccomodationId": 1,
+    "createdAt": "2023-11-19T13:15:09.810Z",
+    "updatedAt": "2023-11-19T13:15:09.810Z"
+  }
 }
 ```
 
@@ -404,6 +462,10 @@ _Response (400 - Bad Request)_
 ```json
 {
   "message": "name is required"
+}
+OR
+{
+  "message": "Room Number is required"
 }
 OR
 {
@@ -419,11 +481,23 @@ OR
 }
 OR
 {
-  "message": "categoryId is required"
+    "message": "Start date Cannot Be Null"
 }
 OR
 {
-  "message": "authorId is required"
+    "message": "End date Cannot Be Null"
+}
+OR
+{
+    "message": "External Id date Cannot Be Null"
+}
+OR
+{
+  "message": "UserId is required"
+}
+OR
+{
+  "message": "AccomodationId is required"
 }
 
 ```
@@ -432,11 +506,11 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "cuisine not found"
+  "message": "This room does not exists"
 }
 ```
 
-## 7. PATCH /cuisines/:id
+## 7. PATCH /rooms/:roomId
 
 Request :
 
@@ -456,34 +530,35 @@ Request :
 }
 ```
 
-- file
+- body
 
 ```json
 {
-  "fieldname": "imgUrl",
-  "originalname": "BAKU Logo.png",
-  "encoding": "7bit",
-  "mimetype": "image/png",
-  "buffer": "<Buffer 89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 01 f4 00 00 01 f4 08 06 00 00 00 cb d6 df 8a 00 00 00 01 73 52 47 42 00 ae ce 1c e9 00 00 00 09
-... 11937 more bytes>",
-  "size": 11987
+  "status": "string"
 }
-
 ```
 
 _Response (200 - OK)_
 
 ```json
 {
-  "message": "cuisine image updated successfully"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```json
-{
-  "message": "file is required"
+  "message": "Booked",
+  "findRoom": {
+    "id": 3,
+    "name": "Kost Welos Tangerang",
+    "roomNumber": 2,
+    "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqWouql30GfzDzhRWhEIxnr2i8QcowQm6iPw&usqp=CAU",
+    "price": 1000000,
+    "description": "Ac,kasur,tv",
+    "startDate": "2023-11-20T00:00:00.000Z",
+    "endDate": "2023-12-05T00:00:00.000Z",
+    "status": "booked",
+    "externalId": "A-6751638",
+    "UserId": 3,
+    "AccomodationId": 1,
+    "createdAt": "2023-11-17T05:26:39.863Z",
+    "updatedAt": "2023-11-19T13:32:26.539Z"
+  }
 }
 ```
 
@@ -491,11 +566,11 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "cuisine not found"
+  "message": "This room does not exists"
 }
 ```
 
-## 8. DELETE /cuisines/:id
+## 8. DELETE /rooms/:roomId
 
 Request :
 
@@ -519,7 +594,23 @@ _Response (200 - OK)_
 
 ```json
 {
-  "message": "cuisine successfully deleted"
+  "message": "Success to delete room",
+  "findRoom": {
+    "id": 9,
+    "name": " Villa Papua",
+    "roomNumber": 1,
+    "imgUrl": "asdoin",
+    "price": 1000000,
+    "description": "helo ini ada di apua",
+    "startDate": "2020-11-10T17:00:00.000Z",
+    "endDate": "2020-12-11T17:00:00.000Z",
+    "status": "booked",
+    "externalId": "A-1700400274730",
+    "UserId": 1,
+    "AccomodationId": 1,
+    "createdAt": "2023-11-19T13:24:34.723Z",
+    "updatedAt": "2023-11-19T13:35:18.380Z"
+  }
 }
 ```
 
@@ -527,11 +618,11 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "cuisine not found"
+  "message": "This room does not exists"
 }
 ```
 
-## 9. POST /categories
+## 9. POST /accomodations
 
 Request :
 
@@ -547,7 +638,8 @@ Request :
 
 ```json
 {
-  "name": "string"
+  "name": "string",
+  "city": "string"
 }
 ```
 
@@ -555,8 +647,14 @@ _Response (201 - Created)_
 
 ```json
 {
-  "id": "integer",
-  "name": "string"
+  "message": "Success to Add accomodation",
+  "accomodation": {
+    "id": 3,
+    "name": "The Hotels",
+    "city": "Jikoda",
+    "updatedAt": "2023-11-19T13:38:53.030Z",
+    "createdAt": "2023-11-19T13:38:53.030Z"
+  }
 }
 ```
 
@@ -564,11 +662,15 @@ _Response (400 - Bad Request)_
 
 ```json
 {
-  "message": "name is required"
+    "message": "Name Cannot Be Null"
+}
+OR
+{
+    "message": "City Cannot Be Null"
 }
 ```
 
-## 10. GET /categories
+## 10. GET /accomodations
 
 Request :
 
@@ -585,16 +687,35 @@ _Response (200 - OK)_
 ```json
 [
   {
-    "id": 1,
-    "name": "Appetizer",
-    "createdAt": "2023-11-03T06:16:00.432Z",
-    "updatedAt": "2023-11-03T06:16:00.432Z"
-  },
+            "id": 1,
+            "name": "DeKhost",
+            "city": "Tangerang Selatan",
+            "createdAt": "2023-11-17T05:26:39.850Z",
+            "updatedAt": "2023-11-17T05:26:39.850Z",
+            "Rooms": [
+                {
+                    "id": 8,
+                    "name": " Villa Papua",
+                    "roomNumber": 1,
+                    "imgUrl": "asdoin",
+                    "price": 1000000,
+                    "description": "helo ini ada di apua",
+                    "startDate": "2020-11-10T17:00:00.000Z",
+                    "endDate": "2020-12-11T17:00:00.000Z",
+                    "status": "booked",
+                    "externalId": "A-1700400158693",
+                    "UserId": 1,
+                    "AccomodationId": 1,
+                    "createdAt": "2023-11-19T13:22:38.692Z",
+                    "updatedAt": "2023-11-19T13:34:58.970Z"
+                },
   ...
+            ]
+  }
 ]
 ```
 
-## 11. PUT /categories/:id
+## 11. PUT /accomodations/:accomodationId
 
 Request :
 
@@ -618,7 +739,8 @@ Request :
 
 ```json
 {
-  "name": "string"
+  "name": "string",
+  "city": "string"
 }
 ```
 
@@ -626,10 +748,14 @@ _Response (200 - OK)_
 
 ```json
 {
-  "id": 11,
-  "name": "Noodle",
-  "createdAt": "2023-11-03T09:53:57.713Z",
-  "updatedAt": "2023-11-03T10:02:14.128Z"
+  "message": "Success to Update accomodation",
+  "findAccomodation": {
+    "id": 3,
+    "name": "Kpauas Villasoainsd",
+    "city": "Papua",
+    "createdAt": "2023-11-19T13:38:53.030Z",
+    "updatedAt": "2023-11-19T13:43:36.725Z"
+  }
 }
 ```
 
@@ -637,7 +763,11 @@ _Response (400 - Bad Request)_
 
 ```json
 {
-  "message": "name is required"
+  "message": "name is cannot be null"
+}
+OR
+{
+  "message": "city is cannot be null"
 }
 ```
 
@@ -645,11 +775,11 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "category not found"
+  "message": "This Accomodation does not exists"
 }
 ```
 
-## 12. DELETE /categories/:id
+## 12. DELETE /accomodations/:accomodationId
 
 Request :
 
@@ -673,7 +803,14 @@ _Response (200 - OK)_
 
 ```json
 {
-  "message": "category successfully deleted"
+  "message": "Success to Delete accomodation",
+  "findAccomodation": {
+    "id": 3,
+    "name": "Kpauas Villasoainsd",
+    "city": "Papua",
+    "createdAt": "2023-11-19T13:38:53.030Z",
+    "updatedAt": "2023-11-19T13:44:40.457Z"
+  }
 }
 ```
 
@@ -681,115 +818,6 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "category not found"
-}
-```
-
-## 13. GET /pub/cuisines
-
-Request :
-
-- headers
-
-```json
-{
-  "authorization": "string"
-}
-```
-
-_Response (200 - OK)_
-
-```json
-[
-    {
-        "id": 4,
-        "name": "Pepperoni Pasta",
-        "description": "Pizza with pepperoni",
-        "price": 100000,
-        "imgUrl": "https://media.istockphoto.com/id/521403691/photo/hot-homemade-pepperoni-pizza.jpg?s=612x612&w=0&k=20&c=PaISuuHcJWTEVoDKNnxaHy7L2BTUkyYZ06hYgzXmTbo=",
-        "createdAt": "2023-11-03T09:40:57.365Z",
-        "updatedAt": "2023-11-03T09:40:57.365Z",
-        "categoryId": 5,
-        "authorId": 1
-    },
-    ...
-]
-```
-
-## 14. GET /pub/cuisines/:id
-
-Request :
-
-- headers
-
-```json
-{
-  "authorization": "string"
-}
-```
-
-- params
-
-```json
-{
-  "id": "string"
-}
-```
-
-_Response (200 - OK)_
-
-```json
-{
-  "id": 4,
-  "name": "Pepperoni Pasta",
-  "description": "Pizza with pepperoni",
-  "price": 100000,
-  "imgUrl": "https://media.istockphoto.com/id/521403691/photo/hot-homemade-pepperoni-pizza.jpg?s=612x612&w=0&k=20&c=PaISuuHcJWTEVoDKNnxaHy7L2BTUkyYZ06hYgzXmTbo=",
-  "createdAt": "2023-11-03T09:40:57.365Z",
-  "updatedAt": "2023-11-03T09:40:57.365Z",
-  "categoryId": 5,
-  "authorId": 1
-}
-```
-
-_Response (404 - Not Found)_
-
-```json
-{
-  "message": "cuisine not found"
-}
-```
-
-## Global Error
-
-_Response (401 - JsonWebTokenError)_
-
-```json
-{
-  "message": "jwt must be provided"
-}
-```
-
-_Response (401 - Unauthenticated)_
-
-```json
-{
-  "message": "invalid token"
-}
-```
-
-_Response (403 - Forbidden)_
-
-```json
-{
-  "message": "you are not authorized"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```json
-{
-  "message": "internal server error"
+  "message": "This Accomodation does not exists"
 }
 ```
